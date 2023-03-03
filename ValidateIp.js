@@ -22,3 +22,38 @@ Constraints:
 [time limit] 5000ms
 [input] string ip
 [output] boolean */ 
+
+function validateIP(ip) {
+	/**
+	@param ip: string
+	@return: boolean
+	*/
+
+	// your code goes here
+  arr = ip.split(".");
+  if(arr.length != 4){
+    return false;
+  }
+  for(let i=0; i< arr.length; i++){
+    let temp = arr[i];
+    if((temp.length) == 0){
+      return false;
+    } else if (temp.length == 1){
+     let num=parseInt(temp,10);
+      if(num < 0 || num >9){
+        return false;
+      }
+    }else if(temp.charAt(0) == '0'){
+      return false;
+    } else{
+      let num=parseInt(temp,10);
+      if(num < 0 || num >255){
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+
+console.log(validateIP('192.168.0.1'));
